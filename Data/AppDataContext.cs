@@ -17,8 +17,8 @@ namespace CodeWearApi.Data
         public DbSet<ItemCarrinhoModel> ItemsCarrinho { get; set; }
         public DbSet<ComentarioModel> Comentarios { get; set; }
         public DbSet<UsuarioModel> Usuarios { get; set; }
-
         public DbSet<RoleModel> Roles { get; set; }
+        public DbSet<ImagemProdutoModel> ImagensProduto {get;set;}
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -34,6 +34,7 @@ namespace CodeWearApi.Data
             modelBuilder.ApplyConfiguration(new UsuarioMap());
             modelBuilder.ApplyConfiguration(new ComentarioMap());
             modelBuilder.ApplyConfiguration(new RoleMap());
+            modelBuilder.ApplyConfiguration(new ImagemProdutoMap());
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -1,84 +1,144 @@
 ﻿using CodeWearApi.Data;
 using CodeWearApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using CodeWearApi.DTOs.Usuario;
 
 namespace CodeWearApi.Controllers
 {
     [ApiController]
-    public class UsuarioController: ControllerBase
+    [Route("usuarios")]
+    public class UsuarioController : ControllerBase
     {
         private readonly AppDataContext _context;
 
-
-        public UsuarioController(AppDataContext context) 
+        public UsuarioController(AppDataContext context)
         {
-            _context  = context;
+            _context = context;
         }
 
-        [HttpGet("usuario/{id:int}")]
-        public IActionResult GetUsuarioById([FromRoute] int id)
+        // GET /usuarios
+        [HttpGet]
+        public async Task<ActionResult<List<UsuarioModel>>> GetUsuarios()
         {
-            var user = _context.Usuarios.SingleOrDefault(x => x.Id == id);
+            var usuarios = await _context.Usuarios.Include(u => u.Role).ToListAsync();
 
-            return Ok(user);
+            List<UsuarioReadDto> usuariosDto = new List<UsuarioReadDto>();
+            
+            foreach(UsuarioModel usuario in usuarios)
+            {
+                UsuarioReadDto udto= new UsuarioReadDto()
+                {
+                    Id = usuario.Id,
+                    Email = usuario.Email,
+                    NomeCompleto = usuario.NomeCompleto,
+                    RoleId = usuario.RoleId,
+                    RoleNome = _context.Roles.SingleOrDefault(x => x.Id == usuario.RoleId).Nome
+                };
+
+                usuariosDto.Add(udto);
+            }
+
+            return Ok(usuariosDto);
         }
 
-        [HttpGet("usuario")]
-        public IActionResult GetAllUsuarios()
+        // GET /usuarios/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UsuarioModel>> GetUsuario(int id)
         {
-            var users = _context.Usuarios.ToList();
+            var usuario = await _context.Usuarios
+                .Include(u => u.Role)
+                .FirstOrDefaultAsync(u => u.Id == id);
 
-            return Ok(users);
+            if (usuario == null)
+                return NotFound();
+
+            UsuarioReadDto udto = new UsuarioReadDto()
+            {
+                Id = usuario.Id,
+                Email = usuario.Email,
+                NomeCompleto = usuario.NomeCompleto,
+                RoleId = usuario.RoleId,
+                RoleNome = _context.Roles.SingleOrDefault(x => x.Id == usuario.RoleId).Nome
+            };
+
+            return Ok(udto);
         }
 
-        [HttpPost("usuario")]
-        public IActionResult PostUsuario([FromBody] UsuarioModel newUser)
+        // POST /usuarios
+        [HttpPost]
+        public async Task<ActionResult<UsuarioModel>> PostUsuario(UsuarioCreateDto usuario)
         {
-            _context.Usuarios.Add(newUser);
-            _context.SaveChanges();
+            UsuarioModel usuarioModel = new UsuarioModel();
+            usuarioModel.Email = usuario.Email;
+            usuarioModel.NomeCompleto = usuario.NomeCompleto;
+            usuarioModel.Senha = usuario.Senha;
+            usuarioModel.RoleId = usuario.RoleId;
+            usuarioModel.Role = _context.Roles.SingleOrDefault(x => x.Id == usuario.RoleId);
+
+
+
+            _context.Usuarios.Add(usuarioModel);
+            await _context.SaveChangesAsync();
+
+            //UsuarioReadDto udto = new UsuarioReadDto();
+            //udto.Id = usuarioModel.Id;
+            //udto.Email = usuarioModel.Email;
+            //udto.NomeCompleto = usuarioModel.NomeCompleto;
+            //udto.RoleId = usuarioModel.RoleId;
+            //udto.RoleNome = _context.Roles.SingleOrDefault(x => x.Id == usuarioModel.RoleId).Nome;
 
             return Ok();
-
         }
 
-        [HttpPut("usuario-senha/{id:int}")]
-        public IActionResult PutSenhaUsuario([FromBody] string senha, [FromRoute] int id)
+        // PUT /usuarios/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutUsuario(int id, UsuarioUpdateDto usuarioAtualizado)
         {
-            var user = _context.Usuarios.SingleOrDefault(x => x.Id == id);
-            user.Password = senha;
-            _context.SaveChanges();
+            var usuarioExistente = await _context.Usuarios.FindAsync(id);
+            if (usuarioExistente == null)
+                return NotFound();
 
-            return Ok();
+            usuarioExistente.Email = usuarioAtualizado.Email;
+            usuarioExistente.NomeCompleto = usuarioAtualizado.NomeCompleto;
+            usuarioExistente.RoleId = usuarioAtualizado.RoleId;
+            if (!string.IsNullOrWhiteSpace(usuarioAtualizado.Senha))
+                usuarioExistente.Senha = usuarioAtualizado.Senha;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
-        [HttpPut("usuario-email/{id:int}")]
-        public IActionResult PutEmailUsuario([FromBody] string email, [FromRoute] int id)
+        // DELETE /usuarios/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUsuario(int id)
         {
-            var user = _context.Usuarios.SingleOrDefault(x => x.Id == id);
-            user.Email = email;
-            _context.SaveChanges();
+            var usuario = await _context.Usuarios.FindAsync(id);
+            if (usuario == null)
+                return NotFound();
 
-            return Ok();
+            _context.Usuarios.Remove(usuario);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
-        [HttpPut("usuario-nome/{id:int}")]
-        public IActionResult PutNomeUsuario([FromBody] string nome, [FromRoute] int id)
+        // GET /usuarios/{id}/carrinhos
+        [HttpGet("{id}/carrinhos")]
+        public async Task<ActionResult<IEnumerable<CarrinhoModel>>> GetCarrinhosUsuario(int id)
         {
-            var user = _context.Usuarios.SingleOrDefault(x => x.Id == id);
-            user.NomeCompleto = nome;
-            _context.SaveChanges();
+            var usuarioExiste = await _context.Usuarios.AnyAsync(u => u.Id == id);
+            if (!usuarioExiste)
+                return NotFound();
 
-            return Ok();
-        }
+            var carrinhos = await _context.Carrinhos
+                .Where(c => c.UsuarioId == id)
+                .ToListAsync();
 
-        [HttpDelete("usuario/{id}")]
-        public IActionResult DeleteUsuario([FromRoute] int id)
-        {
-            var user = _context.Usuarios.SingleOrDefault(x => x.Id == id);
-            _context.Usuarios.Remove(user);
-            _context.SaveChanges();
-
-            return Ok();
+            return Ok(carrinhos);
         }
     }
 }

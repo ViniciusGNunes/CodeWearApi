@@ -1,12 +1,10 @@
-﻿namespace CodeWearApi.Models
+﻿namespace CodeWearApi.DTOs.Usuario
 {
-    public class CarrinhoModel
+    public class CarrinhoReadDto
     {
         public int Id { get; set; }
         public DateTime DataCriacao { get; set; }
         public bool Finalizado { get; set; }
-
-        public int UsuarioId { get; set; }
     }
 
 }

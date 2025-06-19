@@ -10,15 +10,8 @@ public class ComentarioMap : IEntityTypeConfiguration<ComentarioModel>
 
         builder.HasKey(c => c.Id);
 
-        builder.Property(c => c.Id)
-               .ValueGeneratedOnAdd();
-
         builder.Property(c => c.Texto)
-               .IsRequired()
-               .HasMaxLength(240);
+               .IsRequired();
 
-        builder.Property(c => c.UsuarioId)
-            .HasColumnName("UsuarioId")
-            .HasColumnType("INT");
     }
 }

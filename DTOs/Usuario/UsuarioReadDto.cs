@@ -1,18 +1,12 @@
-﻿using System.Data;
-
-namespace CodeWearApi.Models
+﻿namespace CodeWearApi.DTOs.Usuario
 {
-    public class UsuarioModel
+    public class UsuarioReadDto
     {
         public int Id { get; set; }
         public string Email { get; set; }
         public string NomeCompleto { get; set; }
-        public string Senha { get; set; }
-
         public int RoleId { get; set; }
-        public RoleModel Role { get; set; }
-
-
+        public string RoleNome { get; set; }
     }
-}
 
+}

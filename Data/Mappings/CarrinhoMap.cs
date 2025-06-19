@@ -10,25 +10,11 @@ public class CarrinhoMap : IEntityTypeConfiguration<CarrinhoModel>
 
         builder.HasKey(c => c.Id);
 
-        builder.Property(c => c.Id)
-               .ValueGeneratedOnAdd();
-
         builder.Property(c => c.DataCriacao)
-               .IsRequired()
-               .HasDefaultValueSql("GETDATE()");
+               .IsRequired();
 
-        builder.HasMany(c => c.ItensCarrinho)
-               .WithOne(i => i.Carrinho)
-               .HasForeignKey(i => i.CarrinhoId);
+        builder.Property(c => c.Finalizado)
+               .IsRequired();
 
-        builder.Property(c => c.UsuarioId)
-       .IsRequired();
-
-        builder.HasOne<UsuarioModel>()
-               .WithOne()
-               .HasForeignKey<CarrinhoModel>(c => c.UsuarioId);
     }
-
-
-
 }

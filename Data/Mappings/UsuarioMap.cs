@@ -11,20 +11,24 @@ public class UsuarioMap : IEntityTypeConfiguration<UsuarioModel>
         builder.HasKey(u => u.Id);
 
         builder.Property(u => u.Id)
-               .ValueGeneratedOnAdd();
+            .HasColumnType("INT")
+            .UseIdentityColumn()
+            .ValueGeneratedOnAdd();
 
         builder.Property(u => u.Email)
                .IsRequired()
-               .HasMaxLength(120);
+               .HasMaxLength(255);
 
         builder.Property(u => u.NomeCompleto)
                .IsRequired()
-               .HasMaxLength(120);
+               .HasMaxLength(255);
 
-        builder.Property(u => u.Password)
-               .HasMaxLength(120);
+        builder.Property(u => u.Senha)
+               .IsRequired()
+               .HasMaxLength(255);
 
-        builder.Property(u => u.RoleId)
-               .HasColumnType("int");
+        builder.HasOne(u => u.Role)
+               .WithMany(r => r.Usuarios)
+               .HasForeignKey(u => u.RoleId);
     }
 }

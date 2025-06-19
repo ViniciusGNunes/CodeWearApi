@@ -18,35 +18,55 @@
     ]
   },
   {
-    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
-    "Method": "PostProdutos",
-    "RelativePath": "{usuarioId}/produto",
-    "HttpMethod": "POST",
+    "ContainingType": "CodeWearApi.Controllers.CarrinhoController",
+    "Method": "GetAll",
+    "RelativePath": "carrinhos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CodeWearApi.Models.CarrinhoModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.CarrinhoController",
+    "Method": "GetById",
+    "RelativePath": "carrinhos/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "CodeWearApi.ViewModels.ProdutoCreateViewModel",
-        "IsRequired": true
-      },
-      {
-        "Name": "usuarioId",
+        "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "usuarioId",
-        "Type": "",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "CodeWearApi.Models.CarrinhoModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
-    "Method": "PutProduto",
-    "RelativePath": "{usuarioId}/produto/{id}",
+    "ContainingType": "CodeWearApi.Controllers.CarrinhoController",
+    "Method": "Update",
+    "RelativePath": "carrinhos/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -57,22 +77,17 @@
         "IsRequired": true
       },
       {
-        "Name": "model",
-        "Type": "CodeWearApi.ViewModels.ProdutoCreateViewModel",
-        "IsRequired": true
-      },
-      {
-        "Name": "usuarioId",
-        "Type": "System.Int32",
+        "Name": "carrinhoAtualizado",
+        "Type": "CodeWearApi.DTOs.Carrinho.CarrinhoAlterDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
-    "Method": "DeleteProduto",
-    "RelativePath": "{usuarioId}/produto/{id}",
+    "ContainingType": "CodeWearApi.Controllers.CarrinhoController",
+    "Method": "Delete",
+    "RelativePath": "carrinhos/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -81,134 +96,159 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
-      },
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.CarrinhoController",
+    "Method": "FinalizarCarrinho",
+    "RelativePath": "carrinhos/{id}/finalizar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ItemCarrinhoController",
+    "Method": "GetItensPorCarrinho",
+    "RelativePath": "carrinhos/{id}/itens",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CodeWearApi.Models.ItemCarrinhoModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.CarrinhoController",
+    "Method": "Create",
+    "RelativePath": "carrinhos/{usuarioId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "usuarioId",
         "Type": "System.Int32",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "CodeWearApi.Models.CarrinhoModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
-    "Method": "GetProdutos",
-    "RelativePath": "produto",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
-    "Method": "GetProdutoById",
-    "RelativePath": "produto/{id}",
+    "ContainingType": "CodeWearApi.Controllers.CarrinhoController",
+    "Method": "GetCarrinhosPorUsuario",
+    "RelativePath": "carrinhos/usuario/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "userId",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "finalizado",
+        "Type": "System.Boolean",
+        "IsRequired": false
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CodeWearApi.Models.CarrinhoModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "CodeWearApi.Controllers.UsuarioController",
-    "Method": "GetAllUsuarios",
-    "RelativePath": "usuario",
+    "ContainingType": "CodeWearApi.Controllers.ComentarioController",
+    "Method": "GetAll",
+    "RelativePath": "comentarios",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CodeWearApi.Models.ComentarioModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "CodeWearApi.Controllers.UsuarioController",
-    "Method": "PostUsuario",
-    "RelativePath": "usuario",
+    "ContainingType": "CodeWearApi.Controllers.ComentarioController",
+    "Method": "Create",
+    "RelativePath": "comentarios",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "newUser",
-        "Type": "CodeWearApi.Models.UsuarioModel",
+        "Name": "comentario",
+        "Type": "CodeWearApi.Models.ComentarioModel",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CodeWearApi.Controllers.UsuarioController",
-    "Method": "PutEmailUsuario",
-    "RelativePath": "usuario-email/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+    "ReturnTypes": [
       {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Type": "CodeWearApi.Models.ComentarioModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
-    ],
-    "ReturnTypes": []
+    ]
   },
   {
-    "ContainingType": "CodeWearApi.Controllers.UsuarioController",
-    "Method": "PutNomeUsuario",
-    "RelativePath": "usuario-nome/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "nome",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CodeWearApi.Controllers.UsuarioController",
-    "Method": "PutSenhaUsuario",
-    "RelativePath": "usuario-senha/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "senha",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CodeWearApi.Controllers.UsuarioController",
-    "Method": "GetUsuarioById",
-    "RelativePath": "usuario/{id}",
+    "ContainingType": "CodeWearApi.Controllers.ComentarioController",
+    "Method": "GetById",
+    "RelativePath": "comentarios/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -216,6 +256,515 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CodeWearApi.Models.ComentarioModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ComentarioController",
+    "Method": "Update",
+    "RelativePath": "comentarios/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "atualizado",
+        "Type": "CodeWearApi.Models.ComentarioModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ComentarioController",
+    "Method": "Delete",
+    "RelativePath": "comentarios/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ComentarioController",
+    "Method": "GetComentariosPorProduto",
+    "RelativePath": "comentarios/produto/{produtoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produtoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CodeWearApi.Models.ComentarioModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ImagemProdutoController",
+    "Method": "DeleteImagem",
+    "RelativePath": "imagens/{imagemId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "imagemId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ItemCarrinhoController",
+    "Method": "GetAll",
+    "RelativePath": "itemcarrinho",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CodeWearApi.Models.ItemCarrinhoModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ItemCarrinhoController",
+    "Method": "Create",
+    "RelativePath": "itemcarrinho",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "novoItem",
+        "Type": "CodeWearApi.Models.ItemCarrinhoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CodeWearApi.Models.ItemCarrinhoModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ItemCarrinhoController",
+    "Method": "GetById",
+    "RelativePath": "itemcarrinho/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CodeWearApi.Models.ItemCarrinhoModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ItemCarrinhoController",
+    "Method": "Update",
+    "RelativePath": "itemcarrinho/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "itemAtualizado",
+        "Type": "CodeWearApi.Models.ItemCarrinhoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ItemCarrinhoController",
+    "Method": "Delete",
+    "RelativePath": "itemcarrinho/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
+    "Method": "GetAll",
+    "RelativePath": "produtos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CodeWearApi.Models.ProdutoModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
+    "Method": "Create",
+    "RelativePath": "produtos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produto",
+        "Type": "CodeWearApi.Models.ProdutoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CodeWearApi.Models.ProdutoModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
+    "Method": "GetById",
+    "RelativePath": "produtos/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CodeWearApi.Models.ProdutoModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
+    "Method": "Update",
+    "RelativePath": "produtos/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "produto",
+        "Type": "CodeWearApi.Models.ProdutoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
+    "Method": "Delete",
+    "RelativePath": "produtos/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
+    "Method": "GetComentariosProduto",
+    "RelativePath": "produtos/{id}/comentarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CodeWearApi.Models.ComentarioModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ProdutoController",
+    "Method": "GetImagensProduto",
+    "RelativePath": "produtos/{id}/imagens",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CodeWearApi.Models.ImagemProdutoModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ImagemProdutoController",
+    "Method": "GetByProdutoId",
+    "RelativePath": "produtos/{produtoId}/imagens",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produtoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CodeWearApi.Models.ImagemProdutoModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.ImagemProdutoController",
+    "Method": "AddImagem",
+    "RelativePath": "produtos/{produtoId}/imagens",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produtoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "imagem",
+        "Type": "CodeWearApi.Models.ImagemProdutoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CodeWearApi.Models.ImagemProdutoModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.UsuarioController",
+    "Method": "GetUsuarios",
+    "RelativePath": "usuarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[CodeWearApi.Models.UsuarioModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.UsuarioController",
+    "Method": "PostUsuario",
+    "RelativePath": "usuarios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuario",
+        "Type": "CodeWearApi.DTOs.Usuario.UsuarioCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CodeWearApi.Models.UsuarioModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.UsuarioController",
+    "Method": "GetUsuario",
+    "RelativePath": "usuarios/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CodeWearApi.Models.UsuarioModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.UsuarioController",
+    "Method": "PutUsuario",
+    "RelativePath": "usuarios/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "usuarioAtualizado",
+        "Type": "CodeWearApi.DTOs.Usuario.UsuarioUpdateDto",
         "IsRequired": true
       }
     ],
@@ -224,7 +773,7 @@
   {
     "ContainingType": "CodeWearApi.Controllers.UsuarioController",
     "Method": "DeleteUsuario",
-    "RelativePath": "usuario/{id}",
+    "RelativePath": "usuarios/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -236,5 +785,31 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CodeWearApi.Controllers.UsuarioController",
+    "Method": "GetCarrinhosUsuario",
+    "RelativePath": "usuarios/{id}/carrinhos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CodeWearApi.Models.CarrinhoModel, CodeWearApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

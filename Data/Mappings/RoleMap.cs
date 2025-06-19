@@ -1,6 +1,7 @@
 ﻿using CodeWearApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data;
 
 namespace CodeWearApi.Data.Mappings
 {
@@ -10,15 +11,12 @@ namespace CodeWearApi.Data.Mappings
         {
             builder.ToTable("Role");
 
-            builder.HasKey(p => p.Id);
+            builder.HasKey(r => r.Id);
 
-            builder.Property(p => p.Id)
-               .ValueGeneratedOnAdd();
-
-            builder.Property(p => p.Role)
-                .IsRequired()
-                .HasMaxLength(40)
-                .HasColumnType("NVARCHAR");
+            builder.Property(r => r.Nome)
+                   .IsRequired()
+                   .HasColumnName("Role")
+                   .HasMaxLength(255);
         }
     }
 }

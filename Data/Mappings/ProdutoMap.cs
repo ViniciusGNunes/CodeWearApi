@@ -10,23 +10,15 @@ public class ProdutoMap : IEntityTypeConfiguration<ProdutoModel>
 
         builder.HasKey(p => p.Id);
 
-        builder.Property(p => p.Id)
-               .ValueGeneratedOnAdd();
-
         builder.Property(p => p.Nome)
                .IsRequired()
-               .HasMaxLength(120);
+               .HasMaxLength(255);
 
         builder.Property(p => p.TipoProduto)
-               .IsRequired()
-               .HasMaxLength(80);
+               .HasMaxLength(255);
 
         builder.Property(p => p.Preco)
                .IsRequired()
-               .HasColumnType("decimal(10,2)");
-
-        builder.Property(p => p.Tamanho)
-               .IsRequired()
-               .HasMaxLength(50);
+               .HasColumnType("decimal(10, 2)");
     }
 }

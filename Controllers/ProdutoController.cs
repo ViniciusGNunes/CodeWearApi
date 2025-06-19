@@ -1,105 +1,118 @@
 ﻿using CodeWearApi.Data;
 using CodeWearApi.Models;
-using CodeWearApi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CodeWearApi.Controllers
 {
     [ApiController]
-    public class ProdutoController: ControllerBase
+    [Route("produtos")]
+    public class ProdutoController : ControllerBase
     {
         private readonly AppDataContext _context;
-
 
         public ProdutoController(AppDataContext context)
         {
             _context = context;
         }
 
-        private bool UsuarioEhAdmin(int usuarioId)
+        // GET: /produtos
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ProdutoModel>>> GetAll()
         {
-            var usuario = _context.Usuarios.FirstOrDefault(u => u.Id == usuarioId);
-            return usuario != null && usuario.RoleId == 2;
+            return await _context.Produtos
+                .ToListAsync();
         }
 
-        [HttpGet("produto")]
-        public IActionResult GetProdutos() 
+        // GET: /produtos/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProdutoModel>> GetById(int id)
         {
-            var products = _context.Produtos.ToList();
-
-            return Ok(products);
-        }
-
-        [HttpGet("produto/{id:int}")]
-        public IActionResult GetProdutoById(int id)
-        {
-            var produto = _context.Produtos.FirstOrDefault(p => p.Id == id);
+            var produto = await _context.Produtos
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (produto == null)
-                return NotFound(new { mensagem = "Produto não encontrado." });
+                return NotFound();
 
-            return Ok(produto);
+            return produto;
         }
 
-        [HttpPost("{usuarioId:int}/produto")]
-        public IActionResult PostProdutos([FromBody] ProdutoCreateViewModel model, [FromQuery] int usuarioId)
+        // POST: /produtos
+        [HttpPost]
+        public async Task<ActionResult<ProdutoModel>> Create(ProdutoModel produto)
         {
-            if (!UsuarioEhAdmin(usuarioId))
-                return Unauthorized(new { mensagem = "Apenas administradores podem criar produtos." });
+            _context.Produtos.Add(produto);
+            await _context.SaveChangesAsync();
 
-            var novoProduto = new ProdutoModel
-            {
-                Nome = model.Nome,
-                TipoProduto = model.TipoProduto,
-                Preco = model.Preco,
-                Tamanho = model.Tamanho,
-            };
-
-            _context.Produtos.Add(novoProduto);
-            _context.SaveChanges();
-
-            return Ok(novoProduto);
+            return CreatedAtAction(nameof(GetById), new { id = produto.Id }, produto);
         }
 
-        [HttpPut("{usuarioId:int}/produto/{id:int}")]
-        public IActionResult PutProduto(int id, [FromBody] ProdutoCreateViewModel model, [FromRoute] int usuarioId)
+        // PUT: /produtos/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody]ProdutoModel produto)
         {
 
-            if (!UsuarioEhAdmin(usuarioId))
-                return Unauthorized(new { mensagem = "Apenas administradores podem criar produtos." });
+            var oldProduto = _context.Produtos.SingleOrDefault(x => x.Id == id);
 
-            var produto = _context.Produtos.FirstOrDefault(p => p.Id == id);
+            
 
+            oldProduto.Nome = produto.Nome;
+            oldProduto.TipoProduto = produto.TipoProduto;
+            oldProduto.Preco = produto.Preco;
+
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        // DELETE: /produtos/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var produto = await _context.Produtos.FindAsync(id);
             if (produto == null)
-                return NotFound(new { mensagem = "Produto não encontrado." });
-
-            produto.Nome = model.Nome;
-            produto.TipoProduto = model.TipoProduto;
-            produto.Preco = model.Preco;
-            produto.Tamanho = model.Tamanho;
-
-            _context.Produtos.Update(produto);
-            _context.SaveChanges();
-
-            return Ok(produto);
-        }
-
-        [HttpDelete("{usuarioId:int}/produto/{id:int}")]
-        public IActionResult DeleteProduto(int id, [FromRoute] int usuarioId)
-        {
-
-            if (!UsuarioEhAdmin(usuarioId))
-                return Unauthorized(new { mensagem = "Apenas administradores podem criar produtos." });
-
-            var produto = _context.Produtos.FirstOrDefault(p => p.Id == id);
-
-            if (produto == null)
-                return NotFound(new { mensagem = "Produto não encontrado." });
+                return NotFound();
 
             _context.Produtos.Remove(produto);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
+
+        // GET: /produtos/{id}/comentarios
+        [HttpGet("{id}/comentarios")]
+        public async Task<ActionResult<IEnumerable<ComentarioModel>>> GetComentariosProduto(int id)
+        {
+            var produtoExiste = await _context.Produtos.AnyAsync(p => p.Id == id);
+            if (!produtoExiste)
+                return NotFound();
+
+            var comentarios = await _context.Comentarios
+                .Where(c => c.ProdutoId == id)
+                .ToListAsync();
+
+            return Ok(comentarios);
+        }
+
+
+
+
+        // GET: /produtos/{id}/imagens
+
+        [HttpGet("{id}/imagens")]
+        public async Task<ActionResult<IEnumerable<ImagemProdutoModel>>> GetImagensProduto(int id)
+        {
+            var produtoExiste = await _context.Produtos.AnyAsync(p => p.Id == id);
+            if (!produtoExiste)
+                return NotFound();
+
+            var imagens = await _context.ImagensProduto
+                .Where(i => i.ProdutoId == id)
+                .ToListAsync();
+
+            return Ok(imagens);
+        }
+
+
     }
 }

@@ -10,18 +10,7 @@ public class ItemCarrinhoMap : IEntityTypeConfiguration<ItemCarrinhoModel>
 
         builder.HasKey(i => i.Id);
 
-        builder.Property(i => i.Id)
-               .ValueGeneratedOnAdd();
-
         builder.Property(i => i.Quantidade)
                .IsRequired();
-
-        builder.HasOne(i => i.Carrinho)
-               .WithMany(c => c.ItensCarrinho)
-               .HasForeignKey(i => i.CarrinhoId);
-
-        builder.HasOne(i => i.Produto)
-               .WithMany(p => p.ItensCarrinho)
-               .HasForeignKey(i => i.ProdutoId);
     }
 }

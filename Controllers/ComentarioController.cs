@@ -1,71 +1,108 @@
 ﻿using CodeWearApi.Data;
 using CodeWearApi.Models;
-using CodeWearApi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CodeWearApi.Controllers
 {
     [ApiController]
-    public class ComentarioController: ControllerBase
+    [Route("comentarios")]
+    public class ComentarioController : ControllerBase
     {
-
         private readonly AppDataContext _context;
-
 
         public ComentarioController(AppDataContext context)
         {
             _context = context;
         }
 
-        [HttpGet("comentario")]
-        public IActionResult GetComentarios() 
+        // GET /comentarios
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ComentarioModel>>> GetAll()
         {
-            var comentarios = _context.Comentarios.ToList();
-
-            return Ok(comentarios);
+            return await _context.Comentarios
+                .ToListAsync();
         }
 
-        [HttpGet("comentario/{userId:int}")]
-        public IActionResult GetComentariosById([FromRoute] int userId) 
+        // GET /comentarios/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ComentarioModel>> GetById(int id)
         {
-            var comentarios = _context.Comentarios.Where(x=> x.UsuarioId == userId).AsNoTracking().ToList();
-
-            return Ok(comentarios);
-        }
-
-        [HttpPost("comentario/{userId:int}")]
-        public IActionResult PostComentario([FromRoute] int userId, [FromBody] ComentarioCreateViewModel comentarioVm)
-        {
-            var usuario = _context.Usuarios.SingleOrDefault(u => u.Id == userId);
-            if (usuario == null)
-                return NotFound(new { mensagem = "Usuário não encontrado." });
-
-            var novoComentario = new ComentarioModel
-            {
-                UsuarioId = userId,
-                Texto = comentarioVm.Texto
-            };
-
-            _context.Comentarios.Add(novoComentario);
-            _context.SaveChanges();
-
-            return Ok(novoComentario);
-        }
-
-
-        [HttpDelete("comentario/{userId:int}/{comentarioId:int}")]
-        public IActionResult DeleteComentario([FromRoute] int userId, [FromRoute] int comentarioId)
-        {
-            var comentario = _context.Comentarios.SingleOrDefault(c => c.Id == comentarioId && c.UsuarioId == userId);
+            var comentario = await _context.Comentarios
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (comentario == null)
-                return NotFound(new { mensagem = "Comentário não encontrado para este usuário." });
+                return NotFound();
 
-            _context.Comentarios.Remove(comentario);
-            _context.SaveChanges();
+            return Ok(comentario);
+        }
 
+        // POST /comentarios
+        [HttpPost]
+        public async Task<ActionResult<ComentarioModel>> Create(ComentarioModel comentario)
+        {
+            var usuarioExiste = await _context.Usuarios.AnyAsync(u => u.Id == comentario.UsuarioId);
+            if (!usuarioExiste)
+                return BadRequest("Usuário inválido.");
+
+            if (!comentario.ProdutoId.ToString().IsNullOrEmpty())
+            {
+                var produtoExiste = await _context.Produtos.AnyAsync(p => p.Id == comentario.ProdutoId);
+                if (!produtoExiste)
+                    return BadRequest("Produto inválido.");
+            }
+
+            _context.Comentarios.Add(comentario);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetById), new { id = comentario.Id }, comentario);
+        }
+
+        // PUT /comentarios/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody]ComentarioModel atualizado)
+        {
+            var comentario = await _context.Comentarios.FindAsync(id);
+            if (comentario == null)
+                return NotFound();
+
+            comentario.Texto = atualizado.Texto;
+            comentario.ProdutoId = atualizado.ProdutoId;
+            comentario.UsuarioId = atualizado.UsuarioId;
+
+            await _context.SaveChangesAsync();
             return NoContent();
         }
+
+        // DELETE /comentarios/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var comentario = await _context.Comentarios.FindAsync(id);
+            if (comentario == null)
+                return NotFound();
+
+            _context.Comentarios.Remove(comentario);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        // GET /comentarios/produto/{produtoId}
+        [HttpGet("produto/{produtoId}")]
+        public async Task<ActionResult<IEnumerable<ComentarioModel>>> GetComentariosPorProduto(int produtoId)
+        {
+            var produtoExiste = await _context.Produtos.AnyAsync(p => p.Id == produtoId);
+            if (!produtoExiste)
+                return NotFound("Produto não encontrado.");
+
+            var comentarios = await _context.Comentarios
+                .Where(c => c.ProdutoId == produtoId)
+                .ToListAsync();
+
+            return Ok(comentarios);
+        }
+
+
     }
 }
