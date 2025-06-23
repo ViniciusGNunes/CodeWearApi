@@ -49,16 +49,17 @@ namespace CodeWearApi.Controllers
 
         // PUT: /produtos/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody]ProdutoModel produto)
+        public async Task<IActionResult> Update(int id, [FromBody] ProdutoModel produto)
         {
 
-            var oldProduto = _context.Produtos.SingleOrDefault(x => x.Id == id);
+            var oldProduto = await _context.Produtos.SingleOrDefaultAsync(x => x.Id == id);
 
-            
+
 
             oldProduto.Nome = produto.Nome;
             oldProduto.TipoProduto = produto.TipoProduto;
             oldProduto.Preco = produto.Preco;
+            oldProduto.ColecaoId = produto.ColecaoId;
 
 
             await _context.SaveChangesAsync();
@@ -113,6 +114,21 @@ namespace CodeWearApi.Controllers
             return Ok(imagens);
         }
 
+        [HttpGet("{id}/colecoes")]
+        public async Task<IActionResult> GetColecaoProduto([FromRoute]int id) 
+        {
+            var produto = await _context.Produtos.SingleOrDefaultAsync(x => x.Id == id);
+
+            if (produto is null) return Ok("Este produto não existe");
+
+            if (produto.ColecaoId is null) return Ok("Este produto não é parte de uma colecao");
+
+            var colecao = await _context.Colecoes.SingleOrDefaultAsync(x => x.Id == produto.ColecaoId);
+
+            int a = 10;
+
+            return Ok(colecao);
+        }
 
     }
 }

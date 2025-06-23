@@ -26,9 +26,5 @@ public class UsuarioMap : IEntityTypeConfiguration<UsuarioModel>
         builder.Property(u => u.Senha)
                .IsRequired()
                .HasMaxLength(255);
-
-        builder.HasOne(u => u.Role)
-               .WithMany(r => r.Usuarios)
-               .HasForeignKey(u => u.RoleId);
     }
 }

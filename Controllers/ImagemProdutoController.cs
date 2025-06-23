@@ -16,48 +16,55 @@ namespace CodeWearApi.Controllers
             _context = context;
         }
 
-        [HttpPost("/{UsuarioId:int}/upload")]
-        public async Task<IActionResult> UploadImagem([FromRoute]int UsuarioId,IFormFile imagem,[FromForm]ImagemProdutoCreateDto info)
+        [HttpPost("/upload")]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UploadImagem(IFormFile imagem, [FromForm] ImagemProdutoCreateDto info)
         {
             if (imagem == null || imagem.Length == 0)
                 return BadRequest("Imagem inválida.");
 
-            var user = _context.Usuarios.SingleOrDefault(x => x.Id == UsuarioId);
+            if (info == null)
+                return BadRequest("Dados do formulário ausentes.");
 
-            var pastaDestino = Path.Combine(Directory.GetCurrentDirectory(),"Imagens", $"{user.NomeCompleto.ToUpper().Replace(" ", "")}");
+            var prod = _context.Produtos.SingleOrDefault(x => x.Id == info.ProdutoId);
+            if (prod == null)
+                return BadRequest("Produto não encontrado.");
+
+            var pastaDestino = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "Imagens",
+                $"{prod.Nome.Replace(" ", "").ToUpper()}"
+            );
 
             // Cria a pasta se não existir
             if (!Directory.Exists(pastaDestino))
                 Directory.CreateDirectory(pastaDestino);
 
-            // Gera um nome único pra evitar sobrescrever
+            // Gera um nome único
             var nomeArquivo = Guid.NewGuid().ToString() + Path.GetExtension(imagem.FileName);
             var caminhoCompleto = Path.Combine(pastaDestino, nomeArquivo);
-            var caminhoParaBanco = Path.Combine("imagens", nomeArquivo).Replace("\\", "/");
+            var caminhoParaBanco = Path.Combine("Imagens", prod.Nome.Replace(" ", "").ToUpper(), nomeArquivo).Replace("\\", "/");
 
-            // Salva o arquivo no disco
+            // Salva no disco
             using (var stream = new FileStream(caminhoCompleto, FileMode.Create))
             {
                 await imagem.CopyToAsync(stream);
             }
-            // Aqui você salva o `caminhoParaBanco` na sua tabela no banco de dados
-            // Exemplo:
-            // var entidade = new MinhaEntidade { CaminhoImagem = caminhoParaBanco };
-            // _context.Entidade.Add(entidade);
-            // await _context.SaveChangesAsync();
-
-            var improd = new ImagemProdutoModel();
-            improd.Descricao = info.Descricao;
-            improd.ProdutoId = info.ProdutoId;
-            improd.Caminho = caminhoCompleto;
+            // 4294967295
+            // Cria e salva no banco
+            var improd = new ImagemProdutoModel
+            {
+                Descricao = info.Descricao,
+                ProdutoId = info.ProdutoId,
+                Caminho = caminhoCompleto
+            };
 
             _context.ImagensProduto.Add(improd);
-            _context.SaveChangesAsync();
-
-
+            await _context.SaveChangesAsync();
 
             return Ok(new { caminho = caminhoParaBanco });
         }
+
 
 
         // GET /produtos/{produtoId}/imagens

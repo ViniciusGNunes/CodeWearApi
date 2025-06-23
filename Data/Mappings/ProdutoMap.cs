@@ -17,8 +17,12 @@ public class ProdutoMap : IEntityTypeConfiguration<ProdutoModel>
         builder.Property(p => p.TipoProduto)
                .HasMaxLength(255);
 
-        builder.Property(p => p.Preco)
+        builder.Property(p => p.Preco)  
                .IsRequired()
                .HasColumnType("decimal(10, 2)");
+
+        builder.Property(p => p.ColecaoId)
+            .HasColumnType("INT")
+            .HasColumnName("ColecaoID");
     }
 }

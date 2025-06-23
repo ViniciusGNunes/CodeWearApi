@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CodeWearApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61dafe45f384d87ea54e87b03f8097ed6005d935")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59f2b7255d539deb31c7497e96e8f7fb8fb91c8a")]
 [assembly: System.Reflection.AssemblyProductAttribute("CodeWearApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CodeWearApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

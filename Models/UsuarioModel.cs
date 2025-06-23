@@ -10,7 +10,6 @@ namespace CodeWearApi.Models
         public string Senha { get; set; }
 
         public int RoleId { get; set; }
-        public RoleModel Role { get; set; }
 
 
     }

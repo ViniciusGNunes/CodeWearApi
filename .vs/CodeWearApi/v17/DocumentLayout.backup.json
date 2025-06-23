@@ -3,12 +3,68 @@
   "WorkspaceRootPath": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\models\\rolemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:models\\rolemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\data\\mappings\\usuariomap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:data\\mappings\\usuariomap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:controllers\\produtocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\data\\appdatacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:data\\appdatacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\dtos\\colecoes\\colecoesupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:dtos\\colecoes\\colecoesupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\controllers\\colecaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:controllers\\colecaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\models\\colecaomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:models\\colecaomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\data\\mappings\\colecaomap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:data\\mappings\\colecaomap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\models\\produtomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:models\\produtomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\data\\mappings\\produtomap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:data\\mappings\\produtomap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\controllers\\imagemprodutocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:controllers\\imagemprodutocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\imagens\\t\u00EAnisesportivo\\df312f72-c85a-45ec-b6d9-c070415a04fc.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|solutionrelative:imagens\\t\u00EAnisesportivo\\df312f72-c85a-45ec-b6d9-c070415a04fc.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{93C05E1E-BDF5-71F7-2793-5F37AD5D0E50}|CodeWearApi.csproj|c:\\users\\vinig\\uni\\s5\\progweb\\trabalho_codewear\\new\\codewearapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,19 +99,192 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\appsettings.json*",
-              "RelativeToolTip": "appsettings.json*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAACbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-20T22:24:20.931Z",
+              "Title": "RoleModel.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Models\\RoleModel.cs",
+              "RelativeDocumentMoniker": "Models\\RoleModel.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Models\\RoleModel.cs*",
+              "RelativeToolTip": "Models\\RoleModel.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T04:41:17.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsuarioMap.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Data\\Mappings\\UsuarioMap.cs",
+              "RelativeDocumentMoniker": "Data\\Mappings\\UsuarioMap.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Data\\Mappings\\UsuarioMap.cs",
+              "RelativeToolTip": "Data\\Mappings\\UsuarioMap.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAArwBsAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T04:39:18.709Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "UsuarioModel.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Models\\UsuarioModel.cs",
+              "RelativeDocumentMoniker": "Models\\UsuarioModel.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Models\\UsuarioModel.cs",
+              "RelativeToolTip": "Models\\UsuarioModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T04:39:02.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAawEgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T04:35:02.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ColecoesUpdateDto.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\DTOs\\Colecoes\\ColecoesUpdateDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\Colecoes\\ColecoesUpdateDto.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\DTOs\\Colecoes\\ColecoesUpdateDto.cs",
+              "RelativeToolTip": "DTOs\\Colecoes\\ColecoesUpdateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T10:57:25.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ColecaoController.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Controllers\\ColecaoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ColecaoController.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Controllers\\ColecaoController.cs",
+              "RelativeToolTip": "Controllers\\ColecaoController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAowCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T10:43:59.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppDataContext.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Data\\AppDataContext.cs",
+              "RelativeDocumentMoniker": "Data\\AppDataContext.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Data\\AppDataContext.cs",
+              "RelativeToolTip": "Data\\AppDataContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T10:42:36.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ColecaoMap.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Data\\Mappings\\ColecaoMap.cs",
+              "RelativeDocumentMoniker": "Data\\Mappings\\ColecaoMap.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Data\\Mappings\\ColecaoMap.cs",
+              "RelativeToolTip": "Data\\Mappings\\ColecaoMap.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T10:42:16.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ColecaoModel.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Models\\ColecaoModel.cs",
+              "RelativeDocumentMoniker": "Models\\ColecaoModel.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Models\\ColecaoModel.cs",
+              "RelativeToolTip": "Models\\ColecaoModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T10:41:40.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProdutoController.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Controllers\\ProdutoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProdutoController.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Controllers\\ProdutoController.cs",
+              "RelativeToolTip": "Controllers\\ProdutoController.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAawHcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T10:27:39.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProdutoMap.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Data\\Mappings\\ProdutoMap.cs",
+              "RelativeDocumentMoniker": "Data\\Mappings\\ProdutoMap.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Data\\Mappings\\ProdutoMap.cs",
+              "RelativeToolTip": "Data\\Mappings\\ProdutoMap.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T07:06:18.136Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProdutoModel.cs",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Models\\ProdutoModel.cs",
+              "RelativeDocumentMoniker": "Models\\ProdutoModel.cs",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Models\\ProdutoModel.cs",
+              "RelativeToolTip": "Models\\ProdutoModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T06:59:22.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAiwBMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-21T23:39:22.142Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "df312f72-c85a-45ec-b6d9-c070415a04fc.txt",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Imagens\\T\u00CANISESPORTIVO\\df312f72-c85a-45ec-b6d9-c070415a04fc.txt",
+              "RelativeDocumentMoniker": "Imagens\\T\u00CANISESPORTIVO\\df312f72-c85a-45ec-b6d9-c070415a04fc.txt",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Imagens\\T\u00CANISESPORTIVO\\df312f72-c85a-45ec-b6d9-c070415a04fc.txt",
+              "RelativeToolTip": "Imagens\\T\u00CANISESPORTIVO\\df312f72-c85a-45ec-b6d9-c070415a04fc.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-06-21T09:36:53.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAACEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-20T22:24:20.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
@@ -67,19 +296,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 16,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-19T03:22:47.939Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 20,
               "Title": "Sript.sql",
               "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Sript.sql",
               "RelativeDocumentMoniker": "Sript.sql",
@@ -90,20 +319,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
               "Title": "ImagemProdutoController.cs",
               "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Controllers\\ImagemProdutoController.cs",
               "RelativeDocumentMoniker": "Controllers\\ImagemProdutoController.cs",
               "ToolTip": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Controllers\\ImagemProdutoController.cs",
               "RelativeToolTip": "Controllers\\ImagemProdutoController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAzwBcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAhwD4AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T23:48:32.833Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 19,
               "Title": "ComentarioModel.cs",
               "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Models\\ComentarioModel.cs",
               "RelativeDocumentMoniker": "Models\\ComentarioModel.cs",
@@ -115,7 +344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 18,
               "Title": "ComentarioController.cs",
               "DocumentMoniker": "C:\\Users\\vinig\\Uni\\s5\\Progweb\\Trabalho_CodeWear\\new\\CodeWearApi\\Controllers\\ComentarioController.cs",
               "RelativeDocumentMoniker": "Controllers\\ComentarioController.cs",
@@ -123,7 +352,8 @@
               "RelativeToolTip": "Controllers\\ComentarioController.cs",
               "ViewState": "AgIAAFMAAAAAAAAAAAAlwEAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T23:21:59.347Z"
+              "WhenOpened": "2025-06-18T23:21:59.347Z",
+              "EditorCaption": ""
             }
           ]
         }

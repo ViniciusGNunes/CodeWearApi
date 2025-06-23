@@ -20,6 +20,8 @@ namespace CodeWearApi.Data
         public DbSet<RoleModel> Roles { get; set; }
         public DbSet<ImagemProdutoModel> ImagensProduto {get;set;}
 
+        public DbSet<ColecaoModel> Colecoes { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -35,6 +37,7 @@ namespace CodeWearApi.Data
             modelBuilder.ApplyConfiguration(new ComentarioMap());
             modelBuilder.ApplyConfiguration(new RoleMap());
             modelBuilder.ApplyConfiguration(new ImagemProdutoMap());
+            modelBuilder.ApplyConfiguration(new ColecaoMap());
             base.OnModelCreating(modelBuilder);
         }
     }

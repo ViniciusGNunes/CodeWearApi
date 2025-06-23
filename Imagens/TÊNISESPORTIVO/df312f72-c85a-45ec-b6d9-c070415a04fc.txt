@@ -1,0 +1,12 @@
+O que fiz até agora:
+Fui responsável pelo desenvolvimento da maior parte do backend do projeto. Minhas contribuições incluem a implementação dos *controllers*, configuração do `DataContext`, além de colaborar com o Miguel no mapeamento das entidades. Também desenvolvi a documentação dos endpoints, estabeleci a conexão com o banco de dados e, quando necessário, realizei atualizações e *inserts* na base de dados para garantir o correto funcionamento do sistema.
+
+O que farei até a conclusão:
+Ainda restam três implementações sob minha responsabilidade:
+
+* Inclusão do Swagger para documentação automatizada da API;
+* Desenvolvimento da funcionalidade de coleções no backend;
+* Implementação do upload de imagens, possivelmente utilizando o tipo `VARBINARY` (ou `blob`) no SQL Server.
+
+Quais dificuldades estou enfrentando:
+A principal dificuldade no momento é a implementação da funcionalidade de upload de imagens, especialmente quanto à melhor forma de estruturar essa funcionalidade no backend. Estou estudando abordagens viáveis para integrá-la de forma eficiente ao sistema, considerando as boas práticas com SQL Server e .NET.

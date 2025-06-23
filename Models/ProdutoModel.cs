@@ -7,6 +7,8 @@
         public string TipoProduto { get; set; }
         public decimal Preco { get; set; }
 
+        public int? ColecaoId { get; set; }
+
 
     }
 }

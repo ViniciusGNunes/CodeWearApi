@@ -23,7 +23,7 @@ namespace CodeWearApi.Controllers
         [HttpGet]
         public async Task<ActionResult<List<UsuarioModel>>> GetUsuarios()
         {
-            var usuarios = await _context.Usuarios.Include(u => u.Role).ToListAsync();
+            var usuarios = await _context.Usuarios.ToListAsync();
 
             List<UsuarioReadDto> usuariosDto = new List<UsuarioReadDto>();
             
@@ -49,7 +49,6 @@ namespace CodeWearApi.Controllers
         public async Task<ActionResult<UsuarioModel>> GetUsuario(int id)
         {
             var usuario = await _context.Usuarios
-                .Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.Id == id);
 
             if (usuario == null)
@@ -67,6 +66,20 @@ namespace CodeWearApi.Controllers
             return Ok(udto);
         }
 
+        // GET /usuarios/{id}/autenticacao
+        [HttpGet("{id}/autenticacao")]
+        public async Task<ActionResult<UsuarioModel>> AutenticarUsuario(int id)
+        {
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.Id == id);
+
+            if (usuario == null)
+                return NotFound();
+
+
+            return Ok(usuario);
+        }
+
         // POST /usuarios
         [HttpPost]
         public async Task<ActionResult<UsuarioModel>> PostUsuario(UsuarioCreateDto usuario)
@@ -76,7 +89,6 @@ namespace CodeWearApi.Controllers
             usuarioModel.NomeCompleto = usuario.NomeCompleto;
             usuarioModel.Senha = usuario.Senha;
             usuarioModel.RoleId = usuario.RoleId;
-            usuarioModel.Role = _context.Roles.SingleOrDefault(x => x.Id == usuario.RoleId);
 
 
 
