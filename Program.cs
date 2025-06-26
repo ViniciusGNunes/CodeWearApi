@@ -1,4 +1,8 @@
 using CodeWearApi.Data;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using CodeWearApi.Swagger;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +20,13 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddEndpointsApiExplorer(); 
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "CodeWear API", Version = "v1" });
+    c.OperationFilter<FileUploadOperation>(); // Adicione esta linha
+});
 
 var app = builder.Build();
 

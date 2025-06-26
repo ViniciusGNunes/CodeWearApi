@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CodeWearApi.Controllers
 {
+    [Route("imagensProduto")]
     [ApiController]
     public class ImagemProdutoController : ControllerBase
     {
@@ -16,97 +17,55 @@ namespace CodeWearApi.Controllers
             _context = context;
         }
 
-        [HttpPost("/upload")]
-        [Consumes("multipart/form-data")]
-        public async Task<IActionResult> UploadImagem(IFormFile imagem, [FromForm] ImagemProdutoCreateDto info)
+        [HttpPost("upload")]
+        public async Task<IActionResult> Upload([FromForm] ImagemProdutoUploadDto dto)
         {
-            if (imagem == null || imagem.Length == 0)
-                return BadRequest("Imagem inválida.");
+            if (dto.Imagem == null || dto.Imagem.Length == 0)
+                return BadRequest("Imagem não enviada.");
 
-            if (info == null)
-                return BadRequest("Dados do formulário ausentes.");
+            using var memoryStream = new MemoryStream();
+            await dto.Imagem.CopyToAsync(memoryStream);
+            var imagemBytes = memoryStream.ToArray();
 
-            var prod = _context.Produtos.SingleOrDefault(x => x.Id == info.ProdutoId);
-            if (prod == null)
-                return BadRequest("Produto não encontrado.");
-
-            var pastaDestino = Path.Combine(
-                Directory.GetCurrentDirectory(),
-                "Imagens",
-                $"{prod.Nome.Replace(" ", "").ToUpper()}"
-            );
-
-            // Cria a pasta se não existir
-            if (!Directory.Exists(pastaDestino))
-                Directory.CreateDirectory(pastaDestino);
-
-            // Gera um nome único
-            var nomeArquivo = Guid.NewGuid().ToString() + Path.GetExtension(imagem.FileName);
-            var caminhoCompleto = Path.Combine(pastaDestino, nomeArquivo);
-            var caminhoParaBanco = Path.Combine("Imagens", prod.Nome.Replace(" ", "").ToUpper(), nomeArquivo).Replace("\\", "/");
-
-            // Salva no disco
-            using (var stream = new FileStream(caminhoCompleto, FileMode.Create))
+            var imagemProduto = new ImagemProdutoModel
             {
-                await imagem.CopyToAsync(stream);
-            }
-            // 4294967295
-            // Cria e salva no banco
-            var improd = new ImagemProdutoModel
-            {
-                Descricao = info.Descricao,
-                ProdutoId = info.ProdutoId,
-                Caminho = caminhoCompleto
+                Descricao = dto.Descricao,
+                Imagem = imagemBytes,
+                ProdutoId = dto.ProdutoId,
+                TipoMime = dto.Imagem.ContentType // Salva o tipo MIME aqui
             };
 
-            _context.ImagensProduto.Add(improd);
+            _context.ImagensProduto.Add(imagemProduto);
             await _context.SaveChangesAsync();
 
-            return Ok(new { caminho = caminhoParaBanco });
+            return Ok(new { mensagem = "Upload e salvamento realizados com sucesso!", id = imagemProduto.Id });
         }
-
-
-
-        // GET /produtos/{produtoId}/imagens
-        [HttpGet("produtos/{produtoId}/imagens")]
-        public async Task<ActionResult<IEnumerable<ImagemProdutoModel>>> GetByProdutoId(int produtoId)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Download(int id)
         {
-            var produtoExiste = await _context.Produtos.AnyAsync(p => p.Id == produtoId);
-            if (!produtoExiste)
-                return NotFound("Produto não encontrado.");
-
-            var imagens = await _context.ImagensProduto
-                .Where(i => i.ProdutoId == produtoId)
-                .ToListAsync();
-
-            return Ok(imagens);
-        }
-
-        // POST /produtos/{produtoId}/imagens
-        [HttpPost("produtos/{produtoId}/imagens")]
-        public async Task<ActionResult<ImagemProdutoModel>> AddImagem(int produtoId, [FromBody] ImagemProdutoModel imagem)
-        {
-            var produtoExiste = await _context.Produtos.AnyAsync(p => p.Id == produtoId);
-            if (!produtoExiste)
-                return NotFound("Produto não encontrado.");
-
-            imagem.ProdutoId = produtoId;
-
-            _context.ImagensProduto.Add(imagem);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetByProdutoId), new { produtoId = produtoId }, imagem);
-        }
-
-        // DELETE /imagens/{imagemId}
-        [HttpDelete("imagens/{imagemId}")]
-        public async Task<IActionResult> DeleteImagem(int imagemId)
-        {
-            var imagem = await _context.ImagensProduto.FindAsync(imagemId);
+            var imagem = await _context.ImagensProduto.FindAsync(id);
             if (imagem == null)
                 return NotFound();
 
-            _context.ImagensProduto.Remove(imagem);
+            return File(imagem.Imagem, imagem.TipoMime ?? "application/octet-stream", imagem.Descricao);
+        }
+
+        [HttpGet("produto/{produtoId}")]
+        public async Task<ActionResult<IEnumerable<ImagemProdutoModel>>> GetByProduto(int produtoId)
+        {
+            return await _context.ImagensProduto
+                                 .Where(ip => ip.ProdutoId == produtoId)
+                                 .ToListAsync();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var img = await _context.ImagensProduto.FindAsync(id);
+            if (img == null)
+                return NotFound();
+
+            _context.ImagensProduto.Remove(img);
             await _context.SaveChangesAsync();
 
             return NoContent();

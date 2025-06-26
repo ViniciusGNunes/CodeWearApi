@@ -10,18 +10,26 @@ namespace CodeWearApi.Data.Mappings
         {
             builder.ToTable("ImagemProduto");
 
-            builder.HasKey(i => i.Id);
+            builder.HasKey(ip => ip.Id);
 
-            builder.Property(i => i.Descricao)
+            builder.Property(ip => ip.Descricao)
                    .IsRequired()
                    .HasMaxLength(255);
 
-            builder.Property(i => i.Caminho)
-                   .IsRequired()
-                   .HasMaxLength(500);
+            builder.Property(ip => ip.Imagem)
+                   .IsRequired();
 
+            builder.Property(ip => ip.TipoMime)
+                   .HasMaxLength(100);
 
+            builder.Property(ip => ip.ProdutoId)
+                   .IsRequired();
+
+            builder.HasOne<ProdutoModel>() // relacional se quiser navegação
+                   .WithMany()
+                   .HasForeignKey(ip => ip.ProdutoId);
         }
     }
+
 
 }
