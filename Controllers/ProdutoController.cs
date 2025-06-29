@@ -47,20 +47,23 @@ namespace CodeWearApi.Controllers
             return CreatedAtAction(nameof(GetById), new { id = produto.Id }, produto);
         }
 
-        // PUT: /produtos/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ProdutoModel produto)
         {
-
             var oldProduto = await _context.Produtos.SingleOrDefaultAsync(x => x.Id == id);
+            if (oldProduto == null)
+                return NotFound();
 
+            // Verifica se a Colecao existe
+            var colecao = await _context.Colecoes.FindAsync(produto.ColecaoId);
+            if (colecao == null)
+                return BadRequest("Coleção informada não existe.");
 
-
+            // Atualiza os campos
             oldProduto.Nome = produto.Nome;
             oldProduto.TipoProduto = produto.TipoProduto;
             oldProduto.Preco = produto.Preco;
             oldProduto.ColecaoId = produto.ColecaoId;
-
 
             await _context.SaveChangesAsync();
             return NoContent();
@@ -74,11 +77,18 @@ namespace CodeWearApi.Controllers
             if (produto == null)
                 return NotFound();
 
+            var comentarios = _context.Comentarios.Where(x => x.ProdutoId == id).ToList();
+            _context.Comentarios.RemoveRange(comentarios);
+
+            var itensCarrinho = _context.ItemsCarrinho.Where(x => x.ProdutoId == produto.Id).ToList();
+            _context.ItemsCarrinho.RemoveRange(itensCarrinho);
+
             _context.Produtos.Remove(produto);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
+
 
         // GET: /produtos/{id}/comentarios
         [HttpGet("{id}/comentarios")]

@@ -61,11 +61,26 @@ public class ColecaoController : ControllerBase
     public async Task<IActionResult> Delete(int id)
     {
         var colecao = await _context.Colecoes.FindAsync(id);
-        if (colecao == null) return NotFound();
+        if (colecao == null)
+            return NotFound();
 
+        var produtos = _context.Produtos.Where(x => x.ColecaoId == id).ToList();
+
+        // Setar ColecaoId como null e marcar como modificado
+        produtos.ForEach(p =>
+        {
+            p.ColecaoId = null;
+            _context.Entry(p).State = EntityState.Modified;
+        });
+
+        // Salva atualizações dos produtos
+        await _context.SaveChangesAsync();
+
+        // Remove a coleção
         _context.Colecoes.Remove(colecao);
         await _context.SaveChangesAsync();
 
         return NoContent();
     }
+
 }
