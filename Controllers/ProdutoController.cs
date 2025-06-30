@@ -2,6 +2,7 @@
 using CodeWearApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace CodeWearApi.Controllers
 {
@@ -48,26 +49,42 @@ namespace CodeWearApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] ProdutoModel produto)
+        public async Task<IActionResult> Update(int id, [FromBody] JsonElement json)
         {
             var oldProduto = await _context.Produtos.SingleOrDefaultAsync(x => x.Id == id);
             if (oldProduto == null)
                 return NotFound();
 
-            // Verifica se a Colecao existe
-            var colecao = await _context.Colecoes.FindAsync(produto.ColecaoId);
-            if (colecao == null)
-                return BadRequest("Coleção informada não existe.");
+            if (TryGetPropertyCaseInsensitive(json, "Nome", out var nomeProp))
+                oldProduto.Nome = nomeProp.GetString();
 
-            // Atualiza os campos
-            oldProduto.Nome = produto.Nome;
-            oldProduto.TipoProduto = produto.TipoProduto;
-            oldProduto.Preco = produto.Preco;
-            oldProduto.ColecaoId = produto.ColecaoId;
+            if (TryGetPropertyCaseInsensitive(json, "TipoProduto", out var tipoProp))
+                oldProduto.TipoProduto = tipoProp.GetString();
+
+            if (TryGetPropertyCaseInsensitive(json, "Preco", out var precoProp))
+                oldProduto.Preco = precoProp.GetDecimal();
+
+            if (TryGetPropertyCaseInsensitive(json, "ColecaoId", out var colecaoIdProp))
+            {
+                if (colecaoIdProp.ValueKind == JsonValueKind.Null)
+                {
+                    oldProduto.ColecaoId = null;
+                }
+                else
+                {
+                    var colecaoId = colecaoIdProp.GetInt32();
+                    var colecao = await _context.Colecoes.FindAsync(colecaoId);
+                    if (colecao == null)
+                        return BadRequest("Coleção informada não existe.");
+                    oldProduto.ColecaoId = colecaoId;
+                }
+            }
+
 
             await _context.SaveChangesAsync();
             return NoContent();
         }
+
 
         // DELETE: /produtos/{id}
         [HttpDelete("{id}")]
@@ -139,6 +156,21 @@ namespace CodeWearApi.Controllers
 
             return Ok(colecao);
         }
+
+        private bool TryGetPropertyCaseInsensitive(JsonElement json, string propertyName, out JsonElement value)
+        {
+            foreach (var prop in json.EnumerateObject())
+            {
+                if (string.Equals(prop.Name, propertyName, StringComparison.OrdinalIgnoreCase))
+                {
+                    value = prop.Value;
+                    return true;
+                }
+            }
+            value = default;
+            return false;
+        }
+
 
     }
 }
